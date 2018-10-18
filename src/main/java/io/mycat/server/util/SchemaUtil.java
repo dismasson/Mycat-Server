@@ -22,6 +22,13 @@ public class SchemaUtil {
         return parseTables(parser.parseStatement(), new MycatSchemaStatVisitor());
     }
 
+    /**
+     * 检测数据库是否故障
+     *
+     * @param sql
+     * @param type
+     * @return
+     */
     public static String detectDefaultDb(String sql, int type) {
         String db = null;
         Map<String, SchemaConfig> schemaConfigMap = MycatServer.getInstance().getConfig()

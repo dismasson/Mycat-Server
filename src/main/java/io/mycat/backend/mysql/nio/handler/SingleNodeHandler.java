@@ -191,8 +191,6 @@ public class SingleNodeHandler implements ResponseHandler, Terminatable, LoadDat
 	        LOGGER.warn(new StringBuilder().append(source).append(rrs).toString(), e);
 			//设置错误			
 	        connectionError(e, null);
-	
-	
 		}
 
 	}
