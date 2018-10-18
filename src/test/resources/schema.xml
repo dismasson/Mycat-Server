@@ -6,6 +6,8 @@
         <table name="travelrecord" dataNode="dataNode1" autoIncrement="true" primaryKey="id"/>
     </schema>
 
+    <!-- 配置节点，注意database要配置成mysql实例的数据库，否则出现不明觉厉的error日志，
+    心跳检测一直不通过，项目启动成功但是mysql客户端无法连接mycat服务器 -->
     <dataNode name="dataNode1" dataHost="dataHost1" database="db01"/>
 
     <dataHost name="dataHost1" maxCon="1000" minCon="10" balance="0"
