@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
-<mycat:schema xmlns:mycat="http://io.mycat/">
+<mycat:schema>
 
     <schema name="dbtest" checkSQLschema="true" sqlMaxLimit="100">
-        <table name="travelrecord" dataNode="dn1" autoIncrement="true" primaryKey="id"/>
+        <table name="travelrecord" dataNode="dataNode1" autoIncrement="true" primaryKey="id"/>
     </schema>
 
-    <dataNode name="dn1" dataHost="localhost1" database="db1"/>
+    <dataNode name="dataNode1" dataHost="dataHost1" database="db01"/>
 
-    <dataHost name="localhost1" maxCon="1000" minCon="10" balance="0"
+    <dataHost name="dataHost1" maxCon="1000" minCon="10" balance="0"
               writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100">
         <heartbeat>select user()</heartbeat>
-        <writeHost host="hostM1" url="127.0.0.1:3306" user="root"
-                   password="sxli">
+        <writeHost host="hostM1" url="localhost:3306" user="root" password="sxli">
         </writeHost>
     </dataHost>
 

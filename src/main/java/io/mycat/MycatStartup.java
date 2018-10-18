@@ -2,8 +2,8 @@
  * Copyright (c) 2013, OpenCloudDB/MyCAT and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
- * This code is free software;Designed and Developed mainly by many Chinese 
- * opensource volunteers. you can redistribute it and/or modify it under the 
+ * This code is free software;Designed and Developed mainly by many Chinese
+ * opensource volunteers. you can redistribute it and/or modify it under the
  * terms of the GNU General Public License version 2 only, as published by the
  * Free Software Foundation.
  *
@@ -16,50 +16,61 @@
  * You should have received a copy of the GNU General Public License version
  * 2 along with this work; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- * 
- * Any questions about this component can be directed to it's project Web address 
+ *
+ * Any questions about this component can be directed to it's project Web address
  * https://code.google.com/p/opencloudb/.
  *
  */
 package io.mycat;
 
 
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import io.mycat.config.loader.zkprocess.comm.ZkConfig;
+import io.mycat.config.model.SystemConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.mycat.config.loader.zkprocess.comm.ZkConfig;
-import io.mycat.config.model.SystemConfig;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author mycat
  */
 public final class MycatStartup {
+    /**
+     * 日期格式转换对象
+     */
     private static final String dateFormat = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 日志打印对象
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(MycatStartup.class);
+
     public static void main(String[] args) {
-        //use zk ?
+        // 启用zk ?
         ZkConfig.getInstance().initZk();
         try {
             String home = SystemConfig.getHomePath();
             if (home == null) {
+                // 没有配置SYS_HOME
                 System.out.println(SystemConfig.SYS_HOME + "  is not set.");
+                // 退出启动
                 System.exit(-1);
             }
-            // init
+            // 初始化mycat服务
             MycatServer server = MycatServer.getInstance();
             server.beforeStart();
 
-            // startup
+            // 启动mycat服务
             server.startup();
+            // 打印启动成功日志
             System.out.println("MyCAT Server startup successfully. see logs in logs/mycat.log");
 
         } catch (Exception e) {
             SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+            // 打印错误日志
             LOGGER.error(sdf.format(new Date()) + " startup error", e);
+            // 退出启动
             System.exit(-1);
         }
     }

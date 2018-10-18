@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mycat:server SYSTEM "server.dtd">
+<mycat:server>
+    <system>
+        <!-- 0为需要密码登陆、1为不需要密码登陆 ,默认为0，设置为1则需要指定默认账户-->
+        <property name="nonePasswordLogin">0</property>
+        <property name="useHandshakeV10">1</property>
+        <!-- 1为开启实时统计、0为关闭 -->
+        <property name="useSqlStat">0</property>
+        <!-- 1为开启全加班一致性检测、0为关闭 -->
+        <property name="useGlobleTableCheck">0</property>
+        <property name="sequnceHandlerType">2</property>
+        <property name="processorBufferPoolType">0</property>
+        <property name="handleDistributedTransactions">0</property>
+        <property name="useOffHeapForMerge">1</property>
+        <property name="memoryPageSize">64k</property>
+        <property name="spillsFileBufferSize">1k</property>
+        <!-- 启用输入输出流 -->
+        <property name="useStreamOutput">0</property>
+        <!-- 系统预留内存 -->
+        <property name="systemReserveMemorySize">384m</property>
+        <!-- 启用zk服务检测 -->
+        <property name="useZKSwitch">false</property>
+    </system>
+
+    <!-- 配置默认用户 -->
+    <user name="root" defaultAccount="true">
+        <property name="password">sxli</property>
+        <property name="schemas">dbtest</property>
+    </user>
+
+</mycat:server>

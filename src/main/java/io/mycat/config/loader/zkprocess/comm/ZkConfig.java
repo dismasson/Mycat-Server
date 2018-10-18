@@ -57,6 +57,10 @@ public class ZkConfig {
     {
         return ZKPROPERTIES==null?null:ZKPROPERTIES.getProperty(ZkParamCfg.ZK_CFG_URL.getKey())  ;
     }
+
+    /**
+     * 初始化zk
+     */
     public void initZk()
     {
         try {
@@ -75,7 +79,6 @@ public class ZkConfig {
     * @创建日期 2016年9月15日
     */
     public  static ZkConfig getInstance() {
-
         return ZKCFGINSTANCE;
     }
 
