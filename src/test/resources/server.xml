@@ -7,7 +7,7 @@
         <property name="useHandshakeV10">1</property>
         <!-- 1为开启实时统计、0为关闭 -->
         <property name="useSqlStat">0</property>
-        <!-- 1为开启全加班一致性检测、0为关闭 -->
+        <!-- 1为开启全局一致性检测、0为关闭 -->
         <property name="useGlobleTableCheck">0</property>
         <property name="sequnceHandlerType">2</property>
         <property name="processorBufferPoolType">0</property>

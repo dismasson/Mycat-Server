@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mycat:rule SYSTEM "rule.dtd">
+<mycat:rule>
+    <tableRule name="rule1">
+        <rule>
+            <!-- 分表指定columns -->
+            <columns>id</columns>
+            <!-- 分表方法函数引用 -->
+            <algorithm>func1</algorithm>
+        </rule>
+    </tableRule>
+    <function name="func1" class="io.mycat.route.function.PartitionByLong">
+        <!-- 分表个数 -->
+        <property name="partitionCount">2</property>
+        <!-- 分表后长度 -->
+        <property name="partitionLength">512</property>
+    </function>
+</mycat:rule>

@@ -3,7 +3,8 @@
 <mycat:schema>
 
     <schema name="dbtest" checkSQLschema="true" sqlMaxLimit="100">
-        <table name="travelrecord" dataNode="dataNode1" autoIncrement="true" primaryKey="id"/>
+        <table name="travelrecord" dataNode="dataNode1" autoIncrement="true"
+               primaryKey="id" rule="rule1" subTables="travelrecord$1-2"/>
     </schema>
 
     <!-- 配置节点，注意database要配置成mysql实例的数据库，否则出现不明觉厉的error日志，
